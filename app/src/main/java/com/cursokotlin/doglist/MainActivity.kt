@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.RecyclerView
+import com.cursokotlin.doglist.api.RetrofitClient
 import com.cursokotlin.doglist.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -13,6 +14,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewRoot: View
     private lateinit var svDogs: SearchView
     private lateinit var rvDogs: RecyclerView
+
+    val retrofit = RetrofitClient()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
