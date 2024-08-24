@@ -7,6 +7,10 @@ import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.RecyclerView
 import com.cursokotlin.doglist.api.RetrofitClient
 import com.cursokotlin.doglist.databinding.ActivityMainBinding
+import com.cursokotlin.doglist.interfaz.ApiService
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,4 +32,24 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+    //Inicia la corrutina que llama al api con el nombre de la raza
+    private fun searchByName(query: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = retrofit.getRetrofit().create(ApiService::class.java)
+                .getDdogsByBreeds("$query/images")
+
+            val puppies = call.body()
+
+            if(call.isSuccessful){
+
+            } else{
+
+            }
+        }
+    }
+
+
+
+
 }
